@@ -1,0 +1,6 @@
+Hello,
+
+I'm Jeffrey Schachtsick and I'm a student at Oregon State University.  I'm just starting a course in Web Development and getting used to using GitHub remotely and on the Desktop.
+
+Thanks,
+Jeff
