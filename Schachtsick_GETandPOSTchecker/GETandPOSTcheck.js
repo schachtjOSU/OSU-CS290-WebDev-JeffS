@@ -4,8 +4,8 @@ var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var bodyParser = require('body-parser');
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+/*app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());*/
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -28,7 +28,7 @@ app.get('/looper',function(req,res){
   res.render('looper', context);
 });
 
-app.post('/looper', function(req,res){
+/*app.post('/looper', function(req,res){
   var titleLabel = {};
   titleLabel.title = 'POST';
   res.render('looper', titleLabel);
@@ -41,7 +41,7 @@ app.post('/looper', function(req,res){
   var context = {};
   context.dataList = qParams;
   res.render('looper', context);
-});
+});*/
 
 app.use(function(req,res){
   res.status(404);
