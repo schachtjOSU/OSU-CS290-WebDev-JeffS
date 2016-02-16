@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 3333);
+app.set('port', 3000);
 
 app.get('/',function(req,res){
   res.render('home');
@@ -56,5 +56,5 @@ app.use(function(err, req, res, next){
 });
 
 app.listen(app.get('port'), function(){
-  console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
+  console.log('Express started on http://52.10.125.87/' + app.get('port') + '; press Ctrl-C to terminate.');
 });
