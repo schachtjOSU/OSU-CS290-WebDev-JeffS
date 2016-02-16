@@ -17,9 +17,10 @@ app.get('/',function(req,res){
 
 app.get('/looper',function(req,res){
   //var titleLabel = {};
-  //titleLabel.title = 'GET';
+  var title = 'GET';
   //res.render('looper', titleLabel);
   var qParams = [];
+  qParams.push ({'titleLabel':title})
   for (var p in req.query){
     qParams.push({'name':p,'value':req.query[p]})
   }
