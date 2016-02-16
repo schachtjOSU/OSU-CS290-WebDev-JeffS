@@ -16,9 +16,9 @@ app.get('/',function(req,res){
 });
 
 app.get('/looper',function(req,res){
-  var titleLabel = 'GET';
-  context.titleLabel = titleLabel;
-  res.render('looper', context);
+  var titleLabel = {};
+  titleLabel.title = 'GET';
+  res.render('looper', titleLabel);
   var qParams = [];
   for (var p in req.query){
     qParams.push({'name':p,'value':req.query[p]})
@@ -29,9 +29,9 @@ app.get('/looper',function(req,res){
 });
 
 app.post('/looper', function(req,res){
-  var titleLabel = 'POST';
-  context.titleLabel = titleLabel;
-  res.render('looper', context);
+  var titleLabel = {};
+  titleLabel.title = 'POST';
+  res.render('looper', titleLabel);
   var qParams = [];
   for (var p in req.body){
     qParams.push({'name':p,'value':req.body[p]})
