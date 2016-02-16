@@ -17,15 +17,13 @@ app.get('/',function(req,res){
 
 app.get('/looper',function(req,res){
   //var titleLabel = {};
-  var title = 'GET';
   //res.render('looper', titleLabel);
   
   var qParams = [];
   for (var p in req.query){
     qParams.push({'name':p,'value':req.query[p]})
   }
-  var context = {};
-  context.titleLabel = title;
+  var context = {title: "GET"};
   context.dataList = qParams;
   res.render('looper', context);
 });
