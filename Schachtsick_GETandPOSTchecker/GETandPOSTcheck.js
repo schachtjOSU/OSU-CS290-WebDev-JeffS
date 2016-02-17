@@ -16,9 +16,6 @@ app.get('/',function(req,res){
 });
 
 app.get('/looper',function(req,res){
-  //var titleLabel = {};
-  //res.render('looper', titleLabel);
-  
   var qParams = [];
   for (var p in req.query){
     qParams.push({'name':p,'value':req.query[p]})
@@ -28,20 +25,17 @@ app.get('/looper',function(req,res){
   res.render('looper', context);
 });
 
-/*app.post('/looper', function(req,res){
-  var titleLabel = {};
-  titleLabel.title = 'POST';
-  res.render('looper', titleLabel);
+app.post('/looper', function(req,res){
   var qParams = [];
   for (var p in req.body){
     qParams.push({'name':p,'value':req.body[p]})
   }
   console.log(qParams);
   console.log(req.body);
-  var context = {};
+  var context = {title: "POST"};
   context.dataList = qParams;
   res.render('looper', context);
-});*/
+});
 
 app.use(function(req,res){
   res.status(404);
