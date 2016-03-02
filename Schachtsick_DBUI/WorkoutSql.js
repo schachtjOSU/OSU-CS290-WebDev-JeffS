@@ -22,12 +22,12 @@ app.get('/',function(req,res,next){
       next(err);
       return;
     }
-    var qParams = [];
+    /*var qParams = [];
 	for (var p in rows){
 		qParams.push({'name':JSON.stringify(req.query.name)})
-	}
-	context.dataList = qParams;
-	
+	}*/
+	//context.dataList = qParams;
+	context.dataList = JSON.stringify(rows);
 	//context.results = JSON.stringify(rows);
     res.render('home', context);
   });
