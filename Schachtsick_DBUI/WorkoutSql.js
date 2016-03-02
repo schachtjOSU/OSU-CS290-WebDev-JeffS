@@ -71,22 +71,21 @@ app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
 
-document.addEventListener('DOMContentLoaded', addSubmit);
 
 function addButton(){
-	document.getElementById('addSubmit').addEventListener('click', function(event){
-		var req = new XMLHttpRequest();
-		var data = {name:null};
-		var data = {reps:null};
-		var data = {weight:null};
-		var data = {date:null};
-		var data = {measure:null};
-		data.name = document.getElementById('name').value;
-		data.reps = document.getElementById('reps').value;
-		data.weight = document.getElementById('weight').value;
-		data.date = document.getElementById('date').value;
-		data.measure = document.getElementById('measure').value;
-		req.open("GET", "http://52.10.125.87" + app.get('port') + "/insert?name=" + data.name + "&reps=" + data.reps + "&weight=" + data.weight + "&date=" + data.date + "&measure=" + data.measure, true);
+	//document.getElementById('addSubmit').addEventListener('click', function(event){
+	var req = new XMLHttpRequest();
+	var data = {name:null};
+	var data = {reps:null};
+	var data = {weight:null};
+	var data = {date:null};
+	var data = {measure:null};
+	data.name = document.getElementById('name').value;
+	data.reps = document.getElementById('reps').value;
+	data.weight = document.getElementById('weight').value;
+	data.date = document.getElementById('date').value;
+	data.measure = document.getElementById('measure').value;
+	req.open("GET", "http://52.10.125.87" + app.get('port') + "/insert?name=" + data.name + "&reps=" + data.reps + "&weight=" + data.weight + "&date=" + data.date + "&measure=" + data.measure, true);
 		/*req.addEventListener('load', function(){
 			if(req.status >= 200 && req.status < 400){
 				var response = JSON.parse(req.responseText);
