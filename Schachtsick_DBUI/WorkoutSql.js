@@ -22,15 +22,16 @@ app.get('/',function(req,res,next){
       next(err);
       return;
     }
-    var qParams = [];
-	for (var p in rows){
-		qParams.push({'name':rows})
+    
+  });
+  var qParams = [];
+	for (var p in req.query){
+		qParams.push({'name':p})
 	}
 	context.dataList = qParams;
 	
 	//context.results = JSON.stringify(rows);
     res.render('home', context);
-  });
 });
 
 app.get('/insert',function(req,res,next){
