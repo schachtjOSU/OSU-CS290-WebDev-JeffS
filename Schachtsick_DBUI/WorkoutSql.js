@@ -22,7 +22,7 @@ app.get('/',function(req,res,next){
       next(err);
       return;
     }
-    qParams.push({'name':{rows}});
+    qParams.push({'name': rows});
 	/*var qParams = [];
 	for (var p in fields){
 		qParams.push({'name':fields})
