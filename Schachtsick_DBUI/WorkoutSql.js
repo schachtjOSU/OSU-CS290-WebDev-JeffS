@@ -73,7 +73,7 @@ app.listen(app.get('port'), function(){
 
 
 function addButton(){
-	//document.getElementById('addSubmit').addEventListener('click', function(event){
+	document.getElementById('addSubmit').addEventListener('click', function(event){
 	var req = new XMLHttpRequest();
 	var data = {name:null};
 	var data = {reps:null};
@@ -99,5 +99,5 @@ function addButton(){
 		});*/
 		req.send(null);
 		event.preventDefault();
-	//})
+	})
 };
