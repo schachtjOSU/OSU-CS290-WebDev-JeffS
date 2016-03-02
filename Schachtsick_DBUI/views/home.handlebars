@@ -5,7 +5,7 @@
 <!-- Subject: Interaction with a DB UI -->
 
 
-<form>
+<form action="http://52.10.125.87:3000/insert" method = "POST">
 	<fieldset>
 		<legend>Add Workout</legend>
 		<label for="Name">Name: </label>
@@ -23,7 +23,7 @@
 		<br>
 		<label for="Date">Date (eg. yyyy-dd-mm): </label>
 		<input type="text" name="date" id="date">
-		<input type="button" id="addSubmit" value="Add" onclick="addButton()">
+		<input type="submit" id="addSubmit">
 	</fieldset>
 </form>
 <h2>My Workout Results</h2>
