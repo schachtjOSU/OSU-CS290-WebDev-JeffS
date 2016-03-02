@@ -22,11 +22,10 @@ app.get('/',function(req,res,next){
       next(err);
       return;
     }
-    qParams.push({'name': rows});
-	/*var qParams = [];
-	for (var p in fields){
-		qParams.push({'name':fields})
-	}*/
+    var qParams = [];
+	for (var p in rows){
+		qParams.push({'name':rows})
+	}
 	context.dataList = qParams;
 	
 	//context.results = JSON.stringify(rows);
