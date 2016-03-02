@@ -14,6 +14,8 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 3000);
 
+document.addEventListener('DOMContentLoaded', addButton);
+
 // Generate rows
 app.get('/',function(req,res,next){
   var context = {};
@@ -72,7 +74,7 @@ app.listen(app.get('port'), function(){
 });
 
 
-/*function addButton(){
+function addButton(){
 	document.getElementById('addSubmit').addEventListener('click', function(event){
 		var req = new XMLHttpRequest();
 		var data = {name:null};
@@ -85,8 +87,8 @@ app.listen(app.get('port'), function(){
 		data.weight = document.getElementById('weight').value;
 		data.date = document.getElementById('date').value;
 		data.measure = document.getElementById('measure').value;
-		req.open("GET", "http://localhost:" + app.get('port') + "/insert?name=" + data.name + "&reps=" + data.reps + "&weight=" + data.weight + "&date=" + data.date + "&measure=" + data.measure, true);
-		req.addEventListener('load', function(){
+		req.open("GET", "http://52.10.125.87" + app.get('port') + "/insert?name=" + data.name + "&reps=" + data.reps + "&weight=" + data.weight + "&date=" + data.date + "&measure=" + data.measure, true);
+		/*req.addEventListener('load', function(){
 			if(req.status >= 200 && req.status < 400){
 				var response = JSON.parse(req.responseText);
 				//console.log(JSON.parse(req.responseText));
@@ -96,8 +98,8 @@ app.listen(app.get('port'), function(){
 			} else {
 				console.log("Error in network request: " + request.statusText);
 			}
-		});
+		});*/
 		req.send(null);
 		event.preventDefault();
 	})
-}*/
+};
