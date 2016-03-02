@@ -14,8 +14,6 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 3000);
 
-document.addEventListener('DOMContentLoaded', addSubmit);
-
 // Generate rows
 app.get('/',function(req,res,next){
   var context = {};
@@ -73,6 +71,7 @@ app.listen(app.get('port'), function(){
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl-C to terminate.');
 });
 
+document.addEventListener('DOMContentLoaded', addSubmit);
 
 function addButton(){
 	document.getElementById('addSubmit').addEventListener('click', function(event){
