@@ -17,22 +17,6 @@ app.set('port', 3000);
 // Generate rows
 app.get('/',function(req,res,next){
   var context = {};
-  document.getElementById('addSubmit').addEventListener('click', function(event){
-		var req = new XMLHttpRequest();
-		var data = {name:null};
-		var data = {reps:null};
-		var data = {weight:null};
-		var data = {date:null};
-		var data = {measure:null};
-		data.name = document.getElementById('name').value;
-		data.reps = document.getElementById('reps').value;
-		data.weight = document.getElementById('weight').value;
-		data.date = document.getElementById('date').value;
-		data.measure = document.getElementById('measure').value;
-		req.open("GET", "http://52.10.125.87:" + app.get('port') + "/insert?name=" + data.name + "&reps=" + data.reps + "&weight=" + data.weight + "&date=" + data.date + "&measure=" + data.measure, true);
-		req.send(null);
-		event.preventDefault();
-	});
   mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
     if(err){
       next(err);
@@ -88,7 +72,7 @@ app.listen(app.get('port'), function(){
 });
 
 
-function addButton(){
+/*function addButton(){
 	document.getElementById('addSubmit').addEventListener('click', function(event){
 		var req = new XMLHttpRequest();
 		var data = {name:null};
@@ -102,7 +86,7 @@ function addButton(){
 		data.date = document.getElementById('date').value;
 		data.measure = document.getElementById('measure').value;
 		req.open("GET", "http://localhost:" + app.get('port') + "/insert?name=" + data.name + "&reps=" + data.reps + "&weight=" + data.weight + "&date=" + data.date + "&measure=" + data.measure, true);
-		/*req.addEventListener('load', function(){
+		req.addEventListener('load', function(){
 			if(req.status >= 200 && req.status < 400){
 				var response = JSON.parse(req.responseText);
 				//console.log(JSON.parse(req.responseText));
@@ -112,8 +96,8 @@ function addButton(){
 			} else {
 				console.log("Error in network request: " + request.statusText);
 			}
-		});*/
+		});
 		req.send(null);
 		event.preventDefault();
 	})
-}
+}*/
