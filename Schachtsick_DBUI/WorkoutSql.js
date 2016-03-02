@@ -24,8 +24,8 @@ app.get('/',function(req,res,next){
     }
     
 	var qParams = [];
-	for (var p in rows){
-		qParams.push({'name':rows[1]})
+	for (var p in fields){
+		qParams.push({'name':fields})
 	}
 	context.dataList = qParams;
 	
