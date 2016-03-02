@@ -29,7 +29,7 @@ app.get('/',function(req,res,next){
 
 app.get('/insert',function(req,res,next){
   var context = {};
-  mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)", [req.query.c], function(err, result){
+  mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `measure`) VALUES (?, ?, ?, ?, ?)", [req.query.name, req.query.reps, req.query.weight, req.query.date, req.query.measure], function(err, result){
     if(err){
       next(err);
       return;
@@ -48,7 +48,7 @@ app.get('/reset-table',function(req,res,next){
     "reps INT,"+
     "weight INT,"+
     "date DATE,"+
-    "lbs BOOLEAN)";
+    "measure BOOLEAN)";
     mysql.pool.query(createString, function(err){
       context.results = "Table reset";
       res.render('home',context);
@@ -86,8 +86,8 @@ function addButton(){
 		data.date = document.getElementById('date').value;
 		data.measure = document.getElementById('measure').value;
 		req.open("GET", "http://localhost:" + app.get('port') + "/insert?name=" + data.name + "&reps=" + data.reps + "&weight=" + data.weight + "&date=" + data.date + "&measure=" + data.measure, true);
-		req.addEventListener('load', function(){
-			/*if(req.status >= 200 && req.status < 400){
+		/*req.addEventListener('load', function(){
+			if(req.status >= 200 && req.status < 400){
 				var response = JSON.parse(req.responseText);
 				//console.log(JSON.parse(req.responseText));
 				document.getElementById('city').textContent = response.name;
@@ -95,8 +95,8 @@ function addButton(){
 				document.getElementById('humid').textContent = response.main.humidity;
 			} else {
 				console.log("Error in network request: " + request.statusText);
-			}*/
-		});
+			}
+		});*/
 		req.send(null);
 		event.preventDefault();
 	})
