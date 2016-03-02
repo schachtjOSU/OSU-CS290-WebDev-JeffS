@@ -99,5 +99,5 @@ function addButton(){
 		});*/
 		req.send(null);
 		event.preventDefault();
-	})
+	//})
 };
