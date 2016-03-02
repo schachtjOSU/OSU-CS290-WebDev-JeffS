@@ -27,4 +27,7 @@
 	</fieldset>
 </form>
 <h2>My Workout Results</h2>
-<p>{{results}}</p>
+<p>{{#each dataList}}
+    {{this.name}}: {{this.value}}
+  {{/each}}
+</p>

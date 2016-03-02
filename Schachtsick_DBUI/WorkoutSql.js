@@ -22,7 +22,14 @@ app.get('/',function(req,res,next){
       next(err);
       return;
     }
-    context.results = JSON.stringify(rows);
+    
+	var qParams = [];
+	for (var p in rows){
+		qParams.push({'name':p,'value':req.query[p]})
+	}
+	context.dataList = qParams;
+	
+	//context.results = JSON.stringify(rows);
     res.render('home', context);
   });
 });
@@ -72,7 +79,7 @@ app.listen(app.get('port'), function(){
 });
 
 
-function addButton(){
+/*function addButton(){
 	document.getElementById('addSubmit').addEventListener('click', function(event){
 	var req = new XMLHttpRequest();
 	var data = {name:null};
@@ -86,7 +93,7 @@ function addButton(){
 	data.date = document.getElementById('date').value;
 	data.measure = document.getElementById('measure').value;
 	req.open("GET", "http://52.10.125.87" + app.get('port') + "/insert?name=" + data.name + "&reps=" + data.reps + "&weight=" + data.weight + "&date=" + data.date + "&measure=" + data.measure, true);
-		/*req.addEventListener('load', function(){
+		req.addEventListener('load', function(){
 			if(req.status >= 200 && req.status < 400){
 				var response = JSON.parse(req.responseText);
 				//console.log(JSON.parse(req.responseText));
@@ -96,8 +103,8 @@ function addButton(){
 			} else {
 				console.log("Error in network request: " + request.statusText);
 			}
-		});*/
+		});
 		req.send(null);
 		event.preventDefault();
 	})
-};
+};*/
