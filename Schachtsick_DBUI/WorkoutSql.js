@@ -14,7 +14,7 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', 3000);
 
-document.addEventListener('DOMContentLoaded', addButton);
+document.addEventListener('DOMContentLoaded', addSubmit);
 
 // Generate rows
 app.get('/',function(req,res,next){
