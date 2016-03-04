@@ -7,7 +7,7 @@
 
 <form action="http://52.10.125.87:3000/insert?">
 	<fieldset>
-		<legend>Add Workout</legend>
+		<legend>Add a Workout</legend>
 		<label for="Name">Name: </label>
 		<input type="text" name="name" id="name">
 		<br>
@@ -28,6 +28,6 @@
 </form>
 <h2>My Workout Results</h2>
 {{#each dataList}}
-    <p>{{this.id}}: {{this.name}}</p>
+    <p>{{this.name}}<input type="button" value="delete" onclick="deleteRow('workouts', this)" /></p>
   {{/each}}
 

@@ -22,16 +22,20 @@ app.get('/',function(req,res,next){
       next(err);
       return;
     }
-    var qParams = [];
-	for (var p in rows){
-		qParams.push({'name': [req.query.name]})
-	}
-	context.dataList = qParams;
+    //var qParams = [];
+	//for (var p in rows){
+	//	qParams.push({'name': JSON.stringify(rows)})
+	//}
+	//context.dataList = qParams;
 	//context.results = JSON.stringify(rows);
-    res.render('home', context);
+    //res.render('home', context);
+	context.results = JSON.stringify(rows);
+	res.render('home',context);
+	console.log(context.results);
   });
 });
 
+// Insert a row.  Need to make sure that everything gets entered.
 app.get('/insert',function(req,res,next){
   var context = {};
   mysql.pool.query("INSERT INTO workouts (`name`, `reps`, `weight`, `date`, `measure`) VALUES (?, ?, ?, ?, ?)", [req.query.name, req.query.reps, req.query.weight, req.query.date, req.query.measure], function(err, result){
@@ -44,6 +48,10 @@ app.get('/insert',function(req,res,next){
   });
 });
 
+// Delete a row
+
+
+// Reset the table to fresh
 app.get('/reset-table',function(req,res,next){
   var context = {};
   mysql.pool.query("DROP TABLE IF EXISTS workouts", function(err){
