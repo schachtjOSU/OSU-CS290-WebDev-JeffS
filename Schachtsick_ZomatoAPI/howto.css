@@ -1,0 +1,37 @@
+.column3 {
+	float: left;
+	width: 70%;
+	margin: 20px;
+}
+
+.column4{
+	float: left;
+	width: 20%;
+	padding-top: 5%;
+	padding-left: 15px;
+}
+
+.next{
+	padding: 3px;
+	background-color: #ccffcc;
+	border: 2px solid #009900;
+	width: 10%;
+}
+
+pre {
+	background-color: #efefef;
+	width: 85%;
+	margin: 2%;
+	padding: 1%;
+	border: 1px solid #d6d6d6;
+}
+
+code {
+	background-color: #ffe9ec;
+	border: 1px solid #ffbdc7;
+}
+
+img {
+	padding: 1%;
+	border: 1px solid #d6d6d6;
+}
