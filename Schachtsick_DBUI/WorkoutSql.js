@@ -47,7 +47,24 @@ app.get('/insert',function(req,res,next){
 });
 
 // Delete a row
-
+app.get('/delete', function(req, res, next) {
+    var context = {};
+    pool.query("DELETE FROM workouts WHERE id = ?", [req.query.id], function(err, result) {
+        if(err){
+            next(err);
+            return;
+        }
+        pool.query('SELECT * FROM workouts', function(err, rows, fields){
+            if(err){
+                next(err);
+                return;
+            }
+            context = JSON.stringify(rows);
+            console.log(context);
+            res.json(context);
+        });   
+    });
+});
 
 // Reset the table to fresh
 app.get('/reset-table',function(req,res,next){
@@ -83,30 +100,6 @@ app.listen(app.get('port'), function(){
 });
 
 
-function deleteRow(tableID,currentRow) {
-    try {
-        var table = document.getElementById(tableID);
-        var rowCount = table.rows.length;
-        for (var i = 0; i < rowCount; i++) {
-            var row = table.rows[i];
-            /*var chkbox = row.cells[0].childNodes[0];*/
-            /*if (null != chkbox && true == chkbox.checked)*/
-            
-            if (row==currentRow.parentNode.parentNode) {
-                if (rowCount <= 1) {
-                    alert("Cannot delete all the rows.");
-                    break;
-                }
-                table.deleteRow(i);
-                rowCount--;
-                i--;
-            }
-        }
-    } catch (e) {
-        alert(e);
-    }
-    //getValues();
-}
 
 /*function addButton(){
 	document.getElementById('addSubmit').addEventListener('click', function(event){
