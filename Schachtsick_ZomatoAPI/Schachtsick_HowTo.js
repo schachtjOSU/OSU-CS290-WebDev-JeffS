@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(session({secret:'SuperSecretPassword'}));
-app.use(express.static(__dirname + 'public'));  // images and css here
+app.use(express.static(__dirname + '/public'));  // images and css here
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
