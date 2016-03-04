@@ -27,7 +27,8 @@
 	</fieldset>
 </form>
 <h2>My Workout Results</h2>
+<p><b>NAME     REPS</b>
 {{#each dataList}}
-    <p>{{this.name}}<input type="button" value="delete" onclick="deleteRow('workouts', this)" /></p>
+    <p>{{this.name}}     {{this.reps}}<input type="button" value="delete" onclick="deleteRow('workouts', this)" /></p>
   {{/each}}
 
