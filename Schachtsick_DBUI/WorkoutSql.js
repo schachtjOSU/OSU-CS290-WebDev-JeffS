@@ -24,7 +24,7 @@ app.get('/',function(req,res,next){
     }
     var qParams = [];
 	for (var p in rows){
-		qParams.push({'name': JSON.stringify(rows[p].name)} + {'reps': JSON.stringify(rows[p].reps)})
+		qParams.push({'name': JSON.stringify(rows[p].name) + 'reps': JSON.stringify(rows[p].reps)})
 		//qParams.push({'reps': JSON.stringify(rows[p].reps)})
 	}
 	context.dataList = qParams;
