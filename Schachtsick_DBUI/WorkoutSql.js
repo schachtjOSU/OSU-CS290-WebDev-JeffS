@@ -24,10 +24,10 @@ app.get('/',function(req,res,next){
     }
     var qParams = [];
 	for (var p in rows){
-		qParams.push({'name': JSON.stringify(rows[p])})
+		qParams.push({'name': JSON.stringify(rows[p].name)})
 	}
 	context.dataList = qParams;
-	context.results = JSON.stringify(rows[0]);
+	context.results = JSON.stringify(rows[0].name);
 	res.render('home',context);
 	console.log(context.results);
 	
