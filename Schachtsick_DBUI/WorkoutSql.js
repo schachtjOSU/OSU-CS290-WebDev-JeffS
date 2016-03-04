@@ -28,7 +28,7 @@ app.get('/',function(req,res,next){
 		qParams.push({'name': JSON.stringify(rows[p].reps)})
 	}
 	context.dataList = qParams;
-	context.results = JSON.stringify(rows[0].name);
+	context.results = JSON.stringify(rows[0].name + "," + rows[0].reps);
 	res.render('home',context);
 	console.log(context.results);
 	
