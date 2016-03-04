@@ -1,0 +1,99 @@
+<!-- Author: Jeffrey Schachtsick  -->
+<!-- CS 290 - Web Development  -->
+<!-- Zomato API Interactions -->
+<!-- Date: 03/02/2016 -->
+<!-- Subject: HTML for the How-To -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Section 2: Query Intro</title>
+	<link href="howto.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+	<div class="column1"></div>
+	<div class="column2"></div>
+	<div class="column3">
+	<h1> Section 2: Getting a data of a city from Zomato </h1>
+	<p>In this section we will get a start with how to get responses from the Zomato database.  Then later 
+	we tackle how to get city details and how to be able to get data within a radius while in a specific 
+	geographic location.  But first, lets look real quick how to make a simpe request and get a response 
+	from Zomato.</p>
+	<p>In Zomato, they have stored tons of data on cities from around the world and its pretty easy to get 
+	data on a city by using the <code>/cities</code> query.  Lets look at how to make a simple request.  
+	In the URL of the web browser, you can enter a request by putting in the Zomato address which is 
+	<pre>https://developers.zomato.com/api/v2.1</pre>, then the query in this case we will use 
+	<code>/cities</code>, and finally any parameters.  In this case, Im going to query by city name by 
+	using the <code>q</code> parameter and enter in the city name <b>Seattle</b>.  Dont forget, your going 
+	to need to add in your API Key, which will need to be another paramenter called, <b>apikey</b>.  An 
+	example of a request is going to look like so, with <code>Your_API_Key</code> as the api key you would enter.</p>
+	<pre>https://developers.zomato.com/api/v2.1/cities?q=Seattle&apikey=Your_API_Key</pre>
+	<p>Congratulations!  You have made your first query on Zomato and you have some data.  At the time of this writing, 
+	I generated the following data back.</p>
+	<pre>{"status":"success","has_more":0,"has_total":0,"location_suggestions":
+	[{"id":279,"name":"Seattle, WA","country_id":216,"country_name":"United States","discovery_enabled":1,
+	     "is_state":0,"state_id":115,"state_name":"Washington State","state_code":"WA"}]}</pre>
+	<p>So from the above data we have detailed, looks like we some data about Seattle, that its in the 
+	state of Washington, is in the United States, and along with other possibly interesting stuff.  
+	I should note, there are a few identifiers, such as <code>id</code>, where this is the city 
+	identifier that can be used in our later implementations to gather more interesting things.</p>
+	<p>So you might be thinking, well that’s cool, I put in a query for Seattle, but there is only one 
+	Seattle in the world.  What would happen if I put in a different city name for the query?  Go ahead 
+	and see if you can find a city name with more than 8 entries.</p>
+	<p>As an example of a multiple entries, I put in the value <b>portl</b> and returned the following:</p>
+	<pre>{"status":"success","has_more":0,"has_total":0,"location_suggestions":
+	[{"id":286,"name":"Portland, OR","country_id":216,"country_name":"United States","discovery_enabled":1,
+	     "is_state":0,"state_id":106,"state_name":"Oregon","state_code":"OR"},
+	{"id":793,"name":"Portland, ME","country_id":216,"country_name":"United States","discovery_enabled":0,
+	     "is_state":0,"state_id":89,"state_name":"Maine","state_code":"ME"},
+	{"id":1658,"name":"Portland, VIC","country_id":14,"country_name":"Australia","discovery_enabled":0,
+	     "is_state":0,"state_id":132,"state_name":"Victoria","state_code":"VIC"},
+	{"id":3296,"name":"Portland, ON","country_id":37,"country_name":"Canada","discovery_enabled":0,
+	     "is_state":0,"state_id":124,"state_name":"Ontario","state_code":"ON"},
+	{"id":8473,"name":"Portland, PA","country_id":216,"country_name":"United States","discovery_enabled":0,
+	     "is_state":0,"state_id":107,"state_name":"Pennsylvania","state_code":"PA"},
+	{"id":1783,"name":"Port Lincoln, SA","country_id":14,"country_name":"Australia","discovery_enabled":0,
+	     "is_state":0,"state_id":131,"state_name":"South Australia","state_code":"SA"},
+	{"id":9902,"name":"Port Ludlow, WA","country_id":216,"country_name":"United States","discovery_enabled":0,
+	     "is_state":0,"state_id":115,"state_name":"Washington State","state_code":"WA"}]}</pre>
+	<p>My intent was to capture a Portland Oregon, but I also returned a few other entries.  As you can see 
+	in order of ids in ascending order, there are a couple Portland entries, each with their own id, while 
+	another is in Australia that has a different <code>country_id</code> than those in the United States.  
+	Its also worth mentioning, the results returned, ignored white spacing and included Port Lincoln in 
+	Pennsylvania and Port Ludlow in Washington state.  I have also discovered, if you enter just 
+	<b>port</b>, the results are quite different, so it is best when making a query to put in the full name.</p>
+	<p>Having the city ids are nice, because if it is a frequently visited city, you can just store the number 
+	and use it again.  One of two ways to get any of the data is using the city ids.  But it’s a kind of a pain 
+	to make a two step process to have to go find the id for the city and then be able to use it.  So, Zomato 
+	has also implemented a way of being able to use longitude and latitude coordinates, which is handy when 
+	you have a GPS device and the application can get the coordinates to make queries based on your location.</p>
+	<p>For example, Im in Corvallis Oregon (latitude 44.562854, longitude -123.278977) for the first time and 
+	I want to know what kind of cuisine types Zomato has listed are available in the area, that I may expect 
+	to see there.  Using the <code>/cuisine</code>, I can look up the avaialable cuisines in the city order
+	or geographic location I specify.  For example, I can put in the request as:</p>
+	<pre>https://developers.zomato.com/api/v2.1/cuisines?lat=44.562854&lon=-123.278977&apikey=Your_API_Key</pre>
+	<p>Okay, looks like Corvallis has just about every kind of cuisine you can think of there, but how am 
+	I going to know what is actually any good.  In the next section, I will go over how to collect data 
+	of popular restaurants nearby.
+<div class="next">
+		<h3><a href="./HowToZomato4.html">Next >>>></a></h3>
+		</div>
+</div>
+	<div class="column4">
+	<a href="./HowTo-home.handlebars">Home</a>
+	<br>
+	<br>
+	<a href="./HowTo-setup.handlebars">Section 1: Setup</a>
+	<br>
+	<br>
+	<a href="./HowTo-query.handlebars">Section 2: Query Intro</a>
+	<br>
+	<br>
+	<a href="./HowTo-pop.handlebars">Section 3: Popular Restaurants</a>
+	<br>
+	<br>
+	<a href="./HowTo-collect.handlebars">Section 4: Collections</a>
+	</div>
+  </body>
+</html>

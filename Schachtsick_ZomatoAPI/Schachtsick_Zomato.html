@@ -1,0 +1,38 @@
+<!-- Author: Jeffrey Schachtsick  -->
+<!-- CS 290 - Web Development  -->
+<!-- Zomato API Interactions -->
+<!-- Date: 02/29/2016 -->
+<!-- Subject: HTML to Interact with the Zomato -->
+<!-- NOTE: Please have Schachtsick_Zomato.js in same directory -->
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+	<form>
+		<fieldset>
+			<legend>Restaurant by Location</legend>
+			<label for="Latitude">Latitude </label>
+			<input type="text" name="lat" id="lat">
+			<br>
+			<label for="Longitude">Longitude </label>
+			<input type="text" name="lon" id="lon">
+			<br>
+			<input type="submit" id="citySubmit">
+		</fieldset>
+		<!-- <fieldset>
+			<legend>Weather Data by Zip Code</legend>
+			<label for="Enter Zip">Enter a Zip Code </label>
+			<input type="text" name="zip" id="zip">
+			<input type="submit" id="zipSubmit">
+		</fieldset> -->
+	</form>
+	<div>
+		<h2>Restaurant Results</h2>
+		<ul>
+			<li><span>Response: </span><span id="response"></span></li>
+		</ul>
+	</div>
+  <script src="Schachtsick_Zomato.js"></script>
+  </body>
+</html>

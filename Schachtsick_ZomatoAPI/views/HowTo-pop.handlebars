@@ -1,0 +1,121 @@
+<!-- Author: Jeffrey Schachtsick  -->
+<!-- CS 290 - Web Development  -->
+<!-- Zomato API Interactions -->
+<!-- Date: 03/02/2016 -->
+<!-- Subject: HTML for the How-To -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Section 3: Popular Restaurants</title>
+	<link href="howto.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+	<div class="column1"></div>
+	<div class="column2"></div>
+	<div class="column3">
+	  <h1> Section 3: Lists of popular restaurants within a location </h1>
+	  <p>The popular establishments within Corvallis, Oregon include:</p>
+	  <ul>
+		<li>Bakery</li>
+		<li>Casual Dining</li>
+		<li>Brewery</li>
+		<li>Microbrewery</li>
+		<li>Noodle Shop</li>
+		<li>Pub</li>
+		<li>Wine Bar</li>
+		<li>Coffee Shop</li>
+		<li>Food Truck</li>
+		<li>Vineyard</li>
+		<li>Quick Bites</li>
+	  </ul>
+	  <p>If someone were to analyze the above popular fair in Corvallis, that the most popular food fair 
+	  are a quick meal for lunch or relax with an alcoholic beverage and some grub. </p>
+	  <p>How I determined this was using the <code>/establishments</code> query along with the latitude 
+	  and longitude coordinates of Corvallis Oregon.  Now, instead of just plugging this into the URL 
+	  everytime, I can also use HTML and Javascript to give me the data from the Chrome console.  In 
+	  Chrome web browser, a <b>Ctrl-Shift-I</b> will enable a window to see what is going on underneath 
+	  the hood.  When I run my Javascript and HTML I can see the results of actions on the page.</p>
+	  <p>The Javascript that I have created, will listen for a submit button from the HTML side and 
+	  then piece together the longitude and latitude of what was put in text boxes on the HTML side from 
+	  a form, send a GET to Zomato, and will receive the results of the request.  The results are stored 
+	  output to the console to be seen.  In the console I can see an array returned with 11 items of 
+	  establishments when pointing the coordinates at Corvallis Oregon.</p>
+	  <p>Below is just an example of  Javascript code, I created to output to the console.</p>
+	  <pre>document.addEventListener('DOMContentLoaded', cityButton);
+
+function cityButton(){
+	document.getElementById('citySubmit').addEventListener('click', function(event){
+		var req = new XMLHttpRequest();
+		var data = {latit:null};
+		var data = {longit:null};
+		data.latit = document.getElementById('lat').value;
+		data.longit = document.getElementById('lon').value;
+		req.open("GET", "https://developers.zomato.com/api/v2.1/establishments?lat=" 
+		         + data.latit + "&lon=" + data.longit + "&apikey=" + apiKey, true);
+		req.addEventListener('load', function(){
+			if(req.status >= 200 && req.status < 400){
+				var response = JSON.parse(req.responseText);
+				console.log(JSON.parse(req.responseText));
+			} else {
+				console.log("Error in network request: " + request.statusText);
+			}
+		});
+		req.send(null);
+		event.preventDefault();
+	})
+}
+		</pre>
+		<p>If there was a time you needed to access the JSON content from within Javascript you can drill down 
+		specific pieces of the data.  For example, if I wanted to get to the name element within the first 
+		Establishment, which so happened to be <b>Bakery</b>, I would do the following:</p>
+		<pre>document.getElementById('response').textContent = response.establishments[0].establishment.name;</pre>
+		<p>If one really wanted to see the most popular restaurants around a given coordinates, you can use the 
+		<code>/geocode</code> query with the longitude and latitude coordinates to get a detailed list of the 
+		popular restaurants in town.  This will create a large array of data that will contain the following 
+		elements inside the restaurant object:</p>
+		<ul>
+			<li>id: the restaurants ID</li>
+			<li>name: name of the restaurant</li>
+			<li>url: URL link to Zomatos page of the restaurant.</li>
+			<li>location: Inside this object contains more objects including address, locality, city, city_id, and zipcode</li>
+			<li>cuisines: the type of cuisine this restaurant offers.  For example, it could be Italian.</li>
+			<li>average_cost_for_two: an average cost of menu items for two people.</li>
+			<li>user_rating: Inside this object contains more objects including aggregate_rating, rating_text, 
+			and votes.  On Zomato, the rating scale is from 1 to 5, with 1 being bad to 5 being <b>Legendary</b>, 
+			which is really good.</li>
+		</ul>
+		<p>Another query that can be used, should one be more interested in one particular restaurant is the 
+		<code>/restaurant</code> query.  This query requires that you can get the restaurant <code>id</code> 
+		along with the <code>apikey</code>.  When used, it can pull data as described in the geocode query 
+		plus customer reviews and photos.  However, to be able to have access to the reviews and photos, 
+		you have to have a Partner level access API key.</p>
+		<p>One other important query to mention is the <code>/search</code> query which will allow you to 
+		use many parameters that act almost like you can filter your search.  For example, I could put 
+		in the following code:</p>
+		<pre>https://developers.zomato.com/api/v2.1/search?q=Seattle&count=5&radius=10&sort=cost&order=asc&apikey=YOUR_API_KEY</pre>
+		<p>This shows that Im making a query within a 10 mile radius for the first 5 restaurants, sorted by 
+		cost in ascending order.  Other parameters available include an establishment_type and cuisines.</p>
+		<p>In the next section, we will look at how to get reviews and articles when in a particular city.</p>
+		<div class="next">
+		<h3><a href="./HowToZomato5.html">Next >>>></a></h3>
+		</div>
+</div>
+	<div class="column4">
+	<a href="./HowTo-home.handlebars">Home</a>
+	<br>
+	<br>
+	<a href="./HowTo-setup.handlebars">Section 1: Setup</a>
+	<br>
+	<br>
+	<a href="./HowTo-query.handlebars">Section 2: Query Intro</a>
+	<br>
+	<br>
+	<a href="./HowTo-pop.handlebars">Section 3: Popular Restaurants</a>
+	<br>
+	<br>
+	<a href="./HowTo-collect.handlebars">Section 4: Collections</a>
+	</div>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!-- Author: Jeffrey Schachtsick  -->
+<!-- CS 290 - Web Development  -->
+<!-- Zomato API Interactions -->
+<!-- Date: 03/02/2016 -->
+<!-- Subject: HTML for the How-To -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Home: How To Zomato</title>
+	<link href="howto.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+	<div class="column1"></div>
+	<div class="column2"></div>
+	<div class="column3">
+	  <h1> Welcome to the How-to for Zomato API </h1>
+	  <p> By Jeffrey Schachtsick</p>
+	  <h3>A quick How-to of this guide</h3>
+	  <p>A little background on Zomato, it is a service which allows people to find the best 
+	  food and drink in a place you are going or where you are now when you want it.  Are 
+	  you looking for a perfect pint of beer in Melbourne Australia?  Are you looking for 
+	  sushi in Rome?  Looking for something you have not experienced in your local area?  
+	  Zomato may be able to assist you with those questions.</p>
+	  <img src="ZomatoHomePDX.jpg" alt="Zomato PDX Home page" style="width:599px;height:355px">
+	  <p>The Zomato API is a way to access data about the cities and the restaurants in 
+	  those cities.  Some data that one can access are cuisines available in a city, average 
+	  cost for two people in a particular restaurant, and a restaurants ratings.  The data 
+	  that is requested is done through a query and returns JSON objects as a response.  
+	  The goal of this guide is to mention the different types of queries available through 
+	  the API and provide some examples.</p>
+	  <p>In this guide we will discuss some setup with Zomato and the following types of queries:</p>
+	  <ul>
+		<li>
+			<code>/q</code>
+		</li>
+		<li>
+			<code>/cuisines</code>
+		</li>
+		<li>
+			<code>/establishments</code>
+		</li>
+		<li>
+			<code>/geocode</code>
+		</li>
+		<li>
+			<code>/restaurant</code>
+		</li>
+		<li>
+			<code>/search</code>
+		</li>
+		<li>
+			<code>/collections</code>
+		</li>
+	  </ul>
+	  <p>There will be a couple queries in which I will leave out of the document, because 
+	  <code>/location</code>, <code>/location_details</code>, <code>/cities</code>, 
+	  <code>/cuisines</code>, and <code>/restaurant</code> will overlap in coverage of JSON 
+	  object material returned.  Data such as reviews and photos can not be accessed unless 
+	  with a Partner level API key access, so the <code>/reveiws</code> query will also not 
+	  be covered.
+	  <p>To get started, click on the button below!</p>
+	  <p></p>
+	  <h3>Let's Get Started</h3>
+<div class="next">
+		<h3><a href="./HowToZomato2.html">Next >>>></a></h3>
+		</div>
+</div>
+	<div class="column4">
+	<a href="./HowTo-home.handlebars">Home</a>
+	<br>
+	<br>
+	<a href="./HowTo-setup.handlebars">Section 1: Setup</a>
+	<br>
+	<br>
+	<a href="./HowTo-query.handlebars">Section 2: Query Intro</a>
+	<br>
+	<br>
+	<a href="./HowTo-pop.handlebars">Section 3: Popular Restaurants</a>
+	<br>
+	<br>
+	<a href="./HowTo-collect.handlebars">Section 4: Collections</a>
+	</div>
+  </body>
+</html>

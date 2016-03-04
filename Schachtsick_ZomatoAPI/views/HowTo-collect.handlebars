@@ -1,0 +1,66 @@
+<!-- Author: Jeffrey Schachtsick  -->
+<!-- CS 290 - Web Development  -->
+<!-- Zomato API Interactions -->
+<!-- Date: 03/02/2016 -->
+<!-- Subject: HTML for the How-To -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>Section 4: Collections</title>
+	<link href="howto.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+	<div class="column1"></div>
+	<div class="column2"></div>
+	<div class="column3">
+		<h1>Section 4: Articles and Reviews of Restaurants</h1>
+		<p>The Zomato articles and reviews, are found usually covering certain topics relating to large 
+		metropolitans such as Seattle.  Nothing against Corvallis Oregon, but when I attempted to run 
+		the following queries mentioned here, I turned up nada for the town.  In this section, I will 
+		discuss about the <code>/collection</code> query.</p>
+		<p>The collections query, for the specified city, will return articles related to restaurants in 
+		a particular city.  To be able to utilize this query, I would need to utilize the <code>city_id</code> 
+		for a given city.  Remember, this required us to know what the id of the city when performing the 
+		<code>q</code> query.  So for example, the city of Seattle would give me the URL request of:</p>
+		<pre>https://developers.zomato.com/api/v2.1/collections?city_id=279&apikey=YOUR_API_KEY</pre>
+		<p>With an individual sampling of data returned includes:</p>
+		<pre>{"collections":[{"collection":{"collection_id":2432,"title":"Terrific Teriyaki",
+		<br>"url":"https:\/\/www.zomato.com\/seattle\/teriyaki?utm_source=api_basic_user&utm_medium=api&utm_campaign=v2.1",
+		<br>"description":"Beautiful, glazed, juicy meat","image_url":
+		<br>"https:\/\/b.zmtcdn.com\/data\/collections\/f13fcab286adcffb1c67314bf478f15f_1445952225_l.jpg",
+		<br>"res_count":11,"font_type":6,"share_url":"http:\/\/www.zoma.to\/c-279\/2432"}},
+		</pre>
+		<p>Under the collections object is a collection object that has an id, a URL to the article, title, and description.</p>
+		<p>In an attempt to see if I could automatically open the first collection in the Seattle collections, 
+		I put the following javascript code together:</p>
+		<pre>var req = new XMLHttpRequest();
+	var page = response.collections.collection[0].url
+	req.open("GET", page, true)
+	</pre>
+		<p>If you wanted to practice queries on your own, there is a hands-on interface that Zomato has put together 
+		to display results for queries in its documentation section of the Developers API.  I should mention, 
+		it is a little buggy in that it was enough to be noticed, when making new queries after already making 
+		a query the data would not update.</p>
+		<p>I have enjoyed playing around with this API and I have discovered some restaurants in my area that 
+		I have not heard of and ready to try them out.  I hope you at least have an understanding of the Zomato API 
+		and it helps you to work with the API.</p>
+	</div>
+	<div class="column4">
+	<a href="./HowTo-home.handlebars">Home</a>
+	<br>
+	<br>
+	<a href="./HowTo-setup.handlebars">Section 1: Setup</a>
+	<br>
+	<br>
+	<a href="./HowTo-query.handlebars">Section 2: Query Intro</a>
+	<br>
+	<br>
+	<a href="./HowTo-pop.handlebars">Section 3: Popular Restaurants</a>
+	<br>
+	<br>
+	<a href="./HowTo-collect.handlebars">Section 4: Collections</a>
+	</div>
+  </body>
+</html>
