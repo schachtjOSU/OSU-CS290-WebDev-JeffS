@@ -22,16 +22,15 @@ app.get('/',function(req,res,next){
       next(err);
       return;
     }
-    //var qParams = [];
-	//for (var p in rows){
-	//	qParams.push({'name': JSON.stringify(rows)})
-	//}
-	//context.dataList = qParams;
-	//context.results = JSON.stringify(rows);
-    //res.render('home', context);
-	context.results = JSON.stringify(rows);
+    var qParams = [];
+	for (var p in rows){
+		qParams.push({'name': JSON.stringify(rows[p])})
+	}
+	context.dataList = qParams;
+	context.results = JSON.stringify(rows[0]);
 	res.render('home',context);
 	console.log(context.results);
+	
   });
 });
 
