@@ -59,9 +59,9 @@ app.get('/delete', function(req, res, next) {
                 next(err);
                 return;
             }
-            context = JSON.stringify(rows);
-            console.log(context);
-            res.json(context);
+			 
+			context.results = JSON.stringify(rows);
+			res.render('home',context);
         });   
     });
 });

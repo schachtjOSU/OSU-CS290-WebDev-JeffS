@@ -29,6 +29,6 @@
 <h2>My Workout Results</h2>
 <p><b>NAME : REPS : WEIGHT : MEASURE : DATE</b></p>
 {{#each dataList}}
-    <p>{{this.name}}  :  {{this.reps}}  :  {{this.weight}}  :  {{this.measure}}  :  {{this.date}}<input type="button" name="id" onclick="http://52.10.125.87:3000/delete?" /></p>
+    <p>{{this.name}}  :  {{this.reps}}  :  {{this.weight}}  :  {{this.measure}}  :  {{this.date}}<input type="button" value="delete" name="id" onclick="http://52.10.125.87:3000/delete?id="{{this.id}} /></p>
   {{/each}}
 
