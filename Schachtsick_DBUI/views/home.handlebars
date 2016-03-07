@@ -31,8 +31,8 @@
 {{#each dataList}}
     <p>{{this.name}}  :  {{this.reps}}  :  {{this.weight}}  :  {{this.measure}}  :  {{this.date}}     
 	<!--<input type="button" value="Delete" name="id" onclick="http://52.10.125.87:3000/delete?"{{this.id}} />   -->
-	<form method="post" action="http://52.10.125.87:3000/delete?id="{{this.id}} >
-		<input type="hidden" name="id" value={{this.id}} />
+	<form method="post" action="http://52.10.125.87:3000/delete?id={{this.id}}" >
+		<input type="hidden" name="id" value="{{this.id}}" />
 		<input type="submit" value="Delete" />
 	</form>
 	<input type="button" value="Edit" name="id" onclick="http://52.10.125.87:3000/edit?"{{this.id}} /></p>
