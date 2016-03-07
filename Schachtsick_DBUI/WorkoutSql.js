@@ -63,8 +63,8 @@ app.get('/edit',function(req,res,next){
           next(err);
           return;
         }
-        context.results = "Updated " + result.changedRows + " rows.";
-        res.render('home',context);
+        //context.results = "Updated " + result.changedRows + " rows.";
+        res.render('edit',context);
       });
     }
   });
@@ -85,7 +85,7 @@ app.get('/delete', function(req, res, next) {
             }
 			 
 			context.results = JSON.stringify(rows);
-			res.render('home',context);
+			res.render('delete',context);
         });   
     });
 });

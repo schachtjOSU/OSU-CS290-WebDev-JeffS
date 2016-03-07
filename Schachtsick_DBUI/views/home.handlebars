@@ -35,6 +35,9 @@
 		<input type="hidden" name="id" value="{{this.id}}" />
 		<input type="submit" value="Delete" />
 	</form>
-	<input type="button" value="Edit" name="id" onclick="http://52.10.125.87:3000/edit?"{{this.id}} /></p>
+	<form method="GET" action="http://52.10.125.87:3000/edit?{{this.id}}" >
+		<input type="hidden" name="id" value="{{this.id}}" />
+		<input type="submit" value="Edit"
+	<!-- <input type="button" value="Edit" name="id" onclick="http://52.10.125.87:3000/edit?{{this.id}}" /> --></p>
   {{/each}}
 
