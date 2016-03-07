@@ -24,7 +24,7 @@ app.get('/',function(req,res,next){
     }
     var qParams = [];
 	for (var p in rows){
-		qParams.push({'name': JSON.stringify(rows[p].name), 'reps': JSON.stringify(rows[p].reps), 'weight': JSON.stringify(rows[p].weight), 'measure': JSON.stringify(rows[p].measure), 'date': JSON.stringify(rows[p].date)})
+		qParams.push({'id': JSON.stringify(rows[p].id), 'name': JSON.stringify(rows[p].name), 'reps': JSON.stringify(rows[p].reps), 'weight': JSON.stringify(rows[p].weight), 'measure': JSON.stringify(rows[p].measure), 'date': JSON.stringify(rows[p].date)})
 	}
 	context.dataList = qParams;
 	context.results = JSON.stringify(rows);
