@@ -57,7 +57,7 @@ app.get('/edit',function(req,res,next){
     if(result.length == 1){
       var curVals = result[0];
       mysql.pool.query("UPDATE workouts SET name=?, reps=?, weight=?, date=?, measure=? WHERE id=? ",
-        [req.query.name || curVals.name, req.query.reps || curVals.reps, req.query.weight || curVals.weight, req.query.date || curVals.date, req.query.measure || curVals.measure req.query.id],
+        [req.query.name || curVals.name, req.query.reps || curVals.reps, req.query.weight || curVals.weight, req.query.date || curVals.date, req.query.measure || curVals.measure, req.query.id],
         function(err, result){
         if(err){
           next(err);
